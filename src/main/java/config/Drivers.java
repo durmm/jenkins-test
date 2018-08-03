@@ -33,6 +33,7 @@ public class Drivers {
     public String getDriverPath(char browser) {
         String osArch = getOSArch();
         String os = getOSDriverDirectory();
+        System.out.println(System.getProperty("user.dir"));
         System.out.println(getProjectDirectory());
         String driverDirectory = getProjectDirectory() + "src" + separator + "main" + separator + "resources"
                 + separator + "webdrivers" + separator + os + separator;
