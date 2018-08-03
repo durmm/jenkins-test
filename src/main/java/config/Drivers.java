@@ -16,7 +16,7 @@ public class Drivers {
 
     private String getProjectDirectory() {
         String userDir =  System.getProperty("user.dir");
-        if (userDir.contains(System.getProperty("jenkins-test"))) {
+        if (userDir.contains("jenkins-test")) {
             return userDir.replace("/src/test", "");
         } else {
             return userDir.concat(separator + "jenkins-test");
