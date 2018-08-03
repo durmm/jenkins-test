@@ -15,7 +15,12 @@ public class Drivers {
     }
 
     private String getProjectDirectory() {
-        return System.getProperty("user.dir").replace("/src/test", separator);
+        String userDir =  System.getProperty("user.dir");
+        if (userDir.contains(System.getProperty("jenkins-test"))) {
+            return userDir.replace("/src/test", "");
+        } else {
+            return userDir.concat(separator + "jenkins-test");
+        }
     }
 
     private String getOSDriverDirectory() {
@@ -35,7 +40,7 @@ public class Drivers {
         String os = getOSDriverDirectory();
         System.out.println(System.getProperty("user.dir"));
         System.out.println(getProjectDirectory());
-        String driverDirectory = getProjectDirectory() + "src" + separator + "main" + separator + "resources"
+        String driverDirectory = getProjectDirectory() + separator + "src" + separator + "main" + separator + "resources"
                 + separator + "webdrivers" + separator + os + separator;
         if (os.equals("linux")) {
             switch (browser) {
