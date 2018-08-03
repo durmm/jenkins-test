@@ -1,4 +1,8 @@
+package config;
+
 import java.io.File;
+
+import static java.io.File.separator;
 
 public class Drivers {
 
@@ -10,8 +14,8 @@ public class Drivers {
         return System.getProperty("os.arch");
     }
 
-    private String getUserDirectory() {
-        return System.getProperty("user.dir");
+    private String getProjectDirectory() {
+        return System.getProperty("user.dir").replace("/src/test", separator);
     }
 
     private String getOSDriverDirectory() {
@@ -29,8 +33,8 @@ public class Drivers {
     public String getDriverPath(char browser) {
         String osArch = getOSArch();
         String os = getOSDriverDirectory();
-        String separator = File.separator;
-        String driverDirectory = getUserDirectory() + "src" + separator + "main" + separator + "resources"
+        System.out.println(getProjectDirectory());
+        String driverDirectory = getProjectDirectory() + "src" + separator + "main" + separator + "resources"
                 + separator + "webdrivers" + separator + os + separator;
         if (os.equals("linux")) {
             switch (browser) {
