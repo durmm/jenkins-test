@@ -19,7 +19,7 @@ public class Drivers {
         if (userDir.contains("jenkins-test")) {
             return userDir.replace("/src/test", "");
         } else {
-            return userDir.concat(separator + "jenkins-test");
+            return userDir;
         }
     }
 
